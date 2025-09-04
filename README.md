@@ -41,5 +41,5 @@ Um sistema simples para gestão de atendimentos ambulatoriais de uma clínica. P
 > Dica: se preferir, também é possível **Forward Engineer** o `schema.sql` para um banco local e depois usar **Database → Reverse Engineer** para obter o modelo.
 
 Equipe
-- **Aluno 1** – (criador do repositório)  
-- **Aluno 2** – (colaborador)
+- **Aluno 1** – Pedro Tiburcio 
+- **Aluno 2** – Joao Marcelo
