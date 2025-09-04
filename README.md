@@ -52,6 +52,6 @@ projeto.mwb (arquivo do MySQL Workbench com o diagrama)
 
 Equipe
 
-Aluno 1 – Pedro Tiburcio
+Aluno 1 – Pedro Tiburcio Araujo de Andrade MATRICULA 2035
 
-Aluno 2 – Joao Marcelo
+Aluno 2 – Joao Marcelo Dias Pereira de Carvalho MATRICULA 357
