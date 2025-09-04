@@ -1,9 +1,9 @@
-# Sistema de Clínica e Consultas
+ Sistema de Clínica e Consultas
 
-## Ideia / Escopo
+ Ideia / Escopo
 Um sistema simples para gestão de atendimentos ambulatoriais de uma clínica. Permite cadastrar **pacientes**, **médicos**, **especialidades**, **salas** e **convênios**, bem como **agendar/registrar consultas**. O foco é demonstrar a modelagem de dados com diferentes cardinalidades.
 
-## Entidades (≥5)
+ Entidades (≥5)
 - **Paciente** (`paciente`): dados básicos do paciente.
 - **Prontuário** (`prontuario`): histórico clínico _1:1_ com paciente.
 - **Médico** (`medico`): profissionais da clínica.
@@ -13,7 +13,7 @@ Um sistema simples para gestão de atendimentos ambulatoriais de uma clínica. P
 - **Sala** (`sala`): sala/box onde a consulta ocorre.
 - **Convênio** (`convenio`): operadoras/planos aceitos.
 
-## Relacionamentos e justificativas
+ Relacionamentos e justificativas
 - **1:1 – Paciente ↔ Prontuário**  
   Cada paciente possui **um** prontuário exclusivo. Implementado com `prontuario.paciente_id` como **PK e FK** para `paciente.id` (_garante unicidade_).
 - **1:N – Médico (1) → Consulta (N)**  
@@ -27,11 +27,11 @@ Um sistema simples para gestão de atendimentos ambulatoriais de uma clínica. P
 - **N:M – Médico ↔ Especialidade**  
   Um médico pode ter várias especialidades e uma especialidade pode ter vários médicos. Resolvido pela tabela associativa `medico_especialidade(medico_id, especialidade_id)` com **PK composta**.
 
-## Arquivos do repositório
+ Arquivos do repositório
 - `schema.sql` — DDL do banco (MySQL) com todas as tabelas e relacionamentos.
 - `README.md` — este documento.
 
-## Como gerar o arquivo .mwb no MySQL Workbench a partir do schema.sql
+ Como gerar o arquivo .mwb no MySQL Workbench a partir do schema.sql
 1. Abra o **MySQL Workbench** → **File** → **New Model**.  
 2. Vá em **File** → **Import** → **Reverse Engineer MySQL Create Script…**.  
 3. Selecione o arquivo `schema.sql` (deste repositório) → **Next** até concluir.  
@@ -40,6 +40,6 @@ Um sistema simples para gestão de atendimentos ambulatoriais de uma clínica. P
 
 > Dica: se preferir, também é possível **Forward Engineer** o `schema.sql` para um banco local e depois usar **Database → Reverse Engineer** para obter o modelo.
 
-## Equipe
+Equipe
 - **Aluno 1** – (criador do repositório)  
 - **Aluno 2** – (colaborador)
