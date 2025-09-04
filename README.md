@@ -1,45 +1,57 @@
- Sistema de Clínica e Consultas
+Sistema de Clínica e Consultas
+O que é
 
- Ideia / Escopo
-Um sistema simples para gestão de atendimentos ambulatoriais de uma clínica. Permite cadastrar **pacientes**, **médicos**, **especialidades**, **salas** e **convênios**, bem como **agendar/registrar consultas**. O foco é demonstrar a modelagem de dados com diferentes cardinalidades.
+Um sisteminha de exemplo para organizar atendimentos de uma clínica.
+Dá pra cadastrar pacientes, médicos, especialidades, salas e convênios, e marcar consultas.
+A ideia é mostrar como as coisas se relacionam no banco de dados.
 
- Entidades (≥5)
-- **Paciente** (`paciente`): dados básicos do paciente.
-- **Prontuário** (`prontuario`): histórico clínico _1:1_ com paciente.
-- **Médico** (`medico`): profissionais da clínica.
-- **Especialidade** (`especialidade`): áreas de atuação (ex.: Cardiologia).
-- **Médico_Especialidade** (`medico_especialidade`): relação _N:M_ entre médico e especialidade.
-- **Consulta** (`consulta`): agendamentos/atendimentos.
-- **Sala** (`sala`): sala/box onde a consulta ocorre.
-- **Convênio** (`convenio`): operadoras/planos aceitos.
+O que tem no sistema (tabelas)
 
- Relacionamentos e justificativas
-- **1:1 – Paciente ↔ Prontuário**  
-  Cada paciente possui **um** prontuário exclusivo. Implementado com `prontuario.paciente_id` como **PK e FK** para `paciente.id` (_garante unicidade_).
-- **1:N – Médico (1) → Consulta (N)**  
-  Um médico realiza muitas consultas; cada consulta tem **um** médico responsável.
-- **1:N – Paciente (1) → Consulta (N)**  
-  Um paciente pode ter várias consultas; cada consulta pertence a **um** paciente.
-- **1:N – Sala (1) → Consulta (N)**  
-  Uma sala recebe muitas consultas em horários distintos; cada consulta ocupa **uma** sala.
-- **1:N – Convênio (1) → Paciente (N)**  
-  Um convênio pode atender muitos pacientes; cada paciente pode ter **um** convênio principal (campo opcional).
-- **N:M – Médico ↔ Especialidade**  
-  Um médico pode ter várias especialidades e uma especialidade pode ter vários médicos. Resolvido pela tabela associativa `medico_especialidade(medico_id, especialidade_id)` com **PK composta**.
+Paciente (paciente) – dados básicos do paciente.
 
- Arquivos do repositório
-- `schema.sql` — DDL do banco (MySQL) com todas as tabelas e relacionamentos.
-- `README.md` — este documento.
+Prontuário (prontuario) – histórico do paciente.
 
- Como gerar o arquivo .mwb no MySQL Workbench a partir do schema.sql
-1. Abra o **MySQL Workbench** → **File** → **New Model**.  
-2. Vá em **File** → **Import** → **Reverse Engineer MySQL Create Script…**.  
-3. Selecione o arquivo `schema.sql` (deste repositório) → **Next** até concluir.  
-4. O Workbench criará o diagrama EER com as tabelas e FKs.  
-5. Salve o modelo: **File → Save Model** e salve como `projeto.mwb`.  
+Médico (medico) – profissionais que atendem.
 
-> Dica: se preferir, também é possível **Forward Engineer** o `schema.sql` para um banco local e depois usar **Database → Reverse Engineer** para obter o modelo.
+Especialidade (especialidade) – área do médico (ex.: cardiologia).
+
+Médico_Especialidade (medico_especialidade) – liga médico com especialidade.
+
+Consulta (consulta) – o agendamento/atendimento em si.
+
+Sala (sala) – onde a consulta acontece.
+
+Convênio (convenio) – plano de saúde (quando tiver).
+
+Como as coisas se ligam (relacionamentos)
+
+1:1 – Paciente ↔ Prontuário
+Cada paciente tem um prontuário, e cada prontuário é de um paciente só.
+
+1:N – Médico → Consulta
+Um médico faz várias consultas; cada consulta tem um médico responsável.
+
+1:N – Paciente → Consulta
+Um paciente pode ter várias consultas; cada consulta é de um paciente.
+
+1:N – Sala → Consulta
+Uma sala recebe várias consultas (em horários diferentes); cada consulta usa uma sala.
+
+1:N – Convênio → Paciente
+Um convênio pode ter vários pacientes; o paciente pode ter zero ou um convênio principal.
+
+N:M – Médico ↔ Especialidade
+Um médico pode ter várias especialidades e cada especialidade pode ter vários médicos.
+Guardamos essa ligação na tabela medico_especialidade.
+
+O que vai no repositório
+
+README.md (este arquivo)
+
+projeto.mwb (arquivo do MySQL Workbench com o diagrama)
 
 Equipe
-- **Aluno 1** – Pedro Tiburcio 
-- **Aluno 2** – Joao Marcelo
+
+Aluno 1 – Pedro Tiburcio
+
+Aluno 2 – Joao Marcelo
